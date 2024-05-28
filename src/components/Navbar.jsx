@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import userIcon from '../assets/icons/icons8-user-64.png'
+import userIcon from "../assets/icons/icons8-user-64.png";
+import useAuth from "../hooks/useAuth";
 
 export default function Navbar() {
+
+  const {logOut} = useAuth() 
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -58,10 +61,13 @@ export default function Navbar() {
           <li>
             <Link to="dashbord">Dashbord</Link>
           </li>
+          <li>
+            <button onClick={()=>logOut()} className="btn bg-red-500">Logout</button>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <img className='w-10' src={userIcon} alt="userIcon" />
+        <img className="w-10" src={userIcon} alt="userIcon" />
       </div>
     </div>
   );
